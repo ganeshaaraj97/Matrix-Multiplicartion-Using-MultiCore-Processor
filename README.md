@@ -1,1 +1,1 @@
-# Matrix-Multiplicartion-Using-MultiCore-Processor
+# Matrix-Multiplication-Using-MultiCore-Processor
