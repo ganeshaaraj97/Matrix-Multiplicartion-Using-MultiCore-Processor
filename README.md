@@ -24,5 +24,7 @@ parallel manner within all the processors.
 1.3 Tools / Software
 
 1.Modelsim – This is used as the simulation tool in our project
+
 2.Quartus –This is used to compile the Verilog HDL code
+
 3.Matlab – This is used to create input text files.
