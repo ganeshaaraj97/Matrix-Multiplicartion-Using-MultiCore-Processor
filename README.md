@@ -21,7 +21,7 @@ parallel manner within all the processors.
 
 5. Results of the matrix multiplication will be stored in the data memory
 
-1.3 Tools / Software
+Tools / Software
 
 1.Modelsim – This is used as the simulation tool in our project
 
