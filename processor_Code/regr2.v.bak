@@ -1,0 +1,18 @@
+module regr2(clock,write_en,dm_mem_wr_en,datain,dataout,dm_mem_out); 
+	input clock,write_en,dm_mem_wr; 
+	input [15:0] datain; 
+	output reg [15:0] dataout;
+	output reg [15:0] dm_mem_out;	
+	always @(posedge clock) 
+	begin 
+	if (write_en == 1) 
+		dataout <= datain; 
+	end
+	
+	begin 
+	if (dm_mem_wr_en == 1) 
+		dm_mem_out <= datain; 
+	end
+
+		
+endmodule

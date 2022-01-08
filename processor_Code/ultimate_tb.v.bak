@@ -1,0 +1,16 @@
+module ultimate_tb();
+	wire clock;
+	wire startprocess
+  
+  ultimate dut (.clock(clock), .startprocess(startprocess));
+
+initial 
+begin 
+	clock = 0; 
+	startprocess=1;
+end 
+
+always 
+#5  clock =  ! clock; 
+  
+endmodule 

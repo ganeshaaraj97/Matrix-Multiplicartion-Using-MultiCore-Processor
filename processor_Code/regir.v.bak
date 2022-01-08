@@ -1,0 +1,9 @@
+module regir(clock,write_en,datain,dataout); 
+	input clock,write_en; 
+	input [15:0] datain; 
+	output reg [15:0] dataout; 
+	//assign write_en = 1;
+	always @(posedge clock) 
+	begin 
+		dataout <= datain; 
+endmodule

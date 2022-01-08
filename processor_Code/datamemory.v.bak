@@ -1,0 +1,83 @@
+module datamemory(clock,datain_a,data_write_en_a,data_addr_a,datain_b,data_write_en_b,data_addr_b,datain_c,data_write_en_c,data_addr_c,datain_d,data_write_en_d,data_addr_d,dataout_a,dataout_b,dataout_c,dataout_d); 
+ 
+	input clock;  	
+	input data_write_en_a; 
+	input [15:0] data_addr_a;
+	input [15:0] datain_a;
+	
+   input data_write_en_b; 
+	input [15:0] data_addr_b;
+	input [15:0] datain_b;
+	
+   input data_write_en_c; 
+	input [15:0] data_addr_c;
+	input [15:0] datain_c;
+	
+   input data_write_en_c; 
+	input [15:0] data_addr_c;
+	input [15:0] datain_c;
+	
+	output reg [7:0] dataout_a;
+	output reg [7:0] dataout_b;
+	output reg [7:0] dataout_c;
+	output reg [7:0] dataout_d;
+	
+ 	reg [7:0] ram_A[0:15];
+	reg [7:0] ram_B[0:15];
+	reg [7:0] ram [0:65535];
+	
+	integer i;
+	integer k;
+
+	initial 
+	begin
+		$readmemb("C:/Users/Hp Probook/Desktop/FPGA Project/Module/Matrix_A.txt", ram_A);
+		$readmemb("C:/Users/Hp Probook/Desktop/FPGA Project/Module/Matrix_B.txt", ram_B);
+		
+		for(i=0; i<4; i=i+1)
+		begin
+			for(k=0; k<4; k=k+1)
+			begin
+				ram[i+20*k]=ram_A[i+4*k];
+			end
+		end
+		
+		for(i=0; i<16; i=i+1)
+		begin
+			for(k=0; k<80; k=k+20)
+			begin
+				ram[i+k+4]=ram_B[i];
+			end
+		end
+		
+	end
+	always @(posedge clock) 
+ 		begin
+			if (data_write_en_a == 1)
+				ram[data_addr_a] <= datain_a[7:0]; 
+ 	 	 	else
+				dataout_a <= ram[data_addr_a];
+		end
+		
+		begin
+			if (data_write_en_b == 1)
+				ram[data_addr_b] <= datain_b[7:0]; 
+ 	 	 	else
+				dataout_b <= ram[data_addr_b];
+		end
+		
+		begin
+			if (data_write_en_c == 1)
+				ram[data_addr_c] <= datain_c[7:0]; 
+ 	 	 	else
+				dataout_c <= ram[data_addr_c];
+		end
+		
+		begin
+			if (data_write_en_d == 1)
+				ram[data_addr_d] <= datain_d[7:0]; 
+ 	 	 	else
+				dataout_d <= ram[data_addr_d];
+		end
+		
+endmodule 
